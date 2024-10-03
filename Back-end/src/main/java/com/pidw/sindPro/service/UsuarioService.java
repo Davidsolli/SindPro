@@ -17,14 +17,23 @@ public class UsuarioService {
     public UsuarioDTO create(UsuarioDTO usuarioDTO) {
         Usuario usuario = new Usuario();
 
-        usuario.setId(usuarioDTO.getId());
-        usuario.setNome(usuarioDTO.getNome());
-        usuario.setEmail(usuarioDTO.getEmail());
-        usuario.setSenha(usuarioDTO.getSenha());
-        usuario.setTipo(Usuario.TipoUsuario.valueOf(usuarioDTO.getTipo().name()));
+        copyDtoToEntity(usuario, usuarioDTO);
 
         usuario = usuarioRepository.save(usuario);
 
         return new UsuarioDTO(usuario);
+    }
+
+    @Transactional(readOnly = true)
+    public UsuarioDTO findById(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow();
+        return new UsuarioDTO(usuario);
+    }
+
+    public void copyDtoToEntity(Usuario usuario, UsuarioDTO usuarioDTO) {
+        usuario.setNome(usuarioDTO.getNome());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setSenha(usuarioDTO.getSenha());
+        usuario.setTipo(Usuario.TipoUsuario.valueOf(usuarioDTO.getTipo().name()));
     }
 }
