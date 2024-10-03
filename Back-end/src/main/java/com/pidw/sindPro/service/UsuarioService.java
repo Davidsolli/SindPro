@@ -30,6 +30,19 @@ public class UsuarioService {
         return new UsuarioDTO(usuario);
     }
 
+    @Transactional
+    public UsuarioDTO update(Long id, UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioRepository.getReferenceById(id);
+        copyDtoToEntity(usuario,usuarioDTO);
+        usuario = usuarioRepository.save(usuario);
+        return new UsuarioDTO(usuario);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
     public void copyDtoToEntity(Usuario usuario, UsuarioDTO usuarioDTO) {
         usuario.setNome(usuarioDTO.getNome());
         usuario.setEmail(usuarioDTO.getEmail());
