@@ -1,6 +1,5 @@
 package com.pidw.sindPro.controllers;
 
-import com.pidw.sindPro.domains.Usuario;
 import com.pidw.sindPro.dtos.UsuarioDTO;
 import com.pidw.sindPro.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
