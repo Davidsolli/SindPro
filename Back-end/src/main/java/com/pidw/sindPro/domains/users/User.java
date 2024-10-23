@@ -28,22 +28,11 @@ public class User implements UserDetails {
     private String phoneNumber;
     private String cpf;
     private String address;
-    private String Apartment;
+    private Integer Apartment;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
