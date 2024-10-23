@@ -1,5 +1,6 @@
 package com.pidw.sindPro.domains;
 
+import com.pidw.sindPro.domains.users.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class DestinatarioComunicado {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    private User user;
 
     @Column(nullable = false)
     private Boolean lido;

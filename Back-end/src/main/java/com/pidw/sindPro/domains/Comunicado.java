@@ -1,6 +1,7 @@
 package com.pidw.sindPro.domains;
 
 
+import com.pidw.sindPro.domains.users.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class Comunicado {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "remetente_id", nullable = false)
-    private Usuario remetente;
+    private User remetente;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
