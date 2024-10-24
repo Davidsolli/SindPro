@@ -1,0 +1,22 @@
+header {
+  height: 102px;
+  background-color: #fff;
+  .nav-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 100%;
+    border-bottom: 1px solid #d9d9d9;
+    .header-content {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin-left: 30px;
+      img {
+        margin-right: 10px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+}
