@@ -1,0 +1,114 @@
+main {
+  height: 100vh;
+  background-color: #eff1f3;
+  .container {
+    display: flex;
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 100%;
+    .welcome {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .welcome-area {
+        width: 380px;
+        margin-bottom: 60px;
+        h1 {
+          font-size: 40px;
+        }
+        p {
+          color: #666;
+        }
+      }
+      img {
+        width: 472px;
+      }
+    }
+    .login-section {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-color: #fff;
+      padding: 40px;
+      .form-login-content {
+        width: 100%;
+        .system-title {
+          display: flex;
+          align-items: center;
+          margin-bottom: 18px;
+          img {
+            margin-right: 10px;
+          }
+        }
+        .text-title {
+          color: #666;
+          margin-bottom: 30px;
+        }
+        form {
+          .input-area {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 17px;
+            label {
+              margin-bottom: 5px;
+            }
+            input {
+              border-radius: 8px;
+              border: solid 1px #b3b3b3;
+              padding: 16px;
+              &::placeholder {
+                color: #b3b3b3;
+                font-size: 16px;
+              }
+            }
+          }
+          .btn-area {
+            display: flex;
+            margin-top: 18px;
+            button {
+              display: flex;
+              align-items: center;
+              border-radius: 6px;
+              margin-right: 15px;
+              padding: 12px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+            .btn-login {
+              background-color: #2364da;
+              color: #fff;
+              border: none;
+              img {
+                margin-right: 6px;
+              }
+              &:hover {
+                background-color: darken(#2364da, 10%);
+              }
+            }
+            .btn-register {
+              background-color: #fff;
+              color: #2364da;
+              border: #2364da solid 2px;
+              img {
+                margin-right: 6px;
+              }
+              &:hover {
+                background-color: darken(#fff, 10%);
+              }
+            }
+            .btn-forgot-password {
+              background-color: #fff;
+              color: #2364da;
+              border: none;
+              &:hover {
+                color: darken(#2364da, 10%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
