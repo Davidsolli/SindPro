@@ -1,0 +1,98 @@
+main {
+  background-color: #eff1f3;
+  height: 100vh;
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .register-card {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      max-width: 955px;
+      width: 100%;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+
+      .title-card {
+        h1 {
+          font-size: 40px;
+          margin-bottom: 40px;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        .input-line {
+          display: flex;
+          margin-bottom: 17px;
+
+          .input-area {
+            display: flex;
+            flex-direction: column;
+            margin-right: 17px;
+            width: 100%;
+
+            label {
+              font-size: 16px;
+              margin-bottom: 5px;
+            }
+            input {
+              padding: 12px 16px;
+              border-radius: 8px;
+              border: #d9d9d9 1px solid;
+              &::placeholder {
+                color: #b3b3b3;
+              }
+            }
+          }
+        }
+      }
+      .button-area {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+
+        button {
+          padding: 12px;
+          border-radius: 6px;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+          border: none;
+
+          &:first-child {
+            background-color: #2364da;
+            color: white;
+            border: 1px solid #2364da;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: darken(#2364da, 10%);
+            }
+          }
+
+          &:last-child {
+            background-color: #fff;
+            color: #2364da;
+            border: 2px solid #2364da;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: darken(#fff, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
