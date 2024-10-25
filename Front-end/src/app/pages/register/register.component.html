@@ -5,68 +5,141 @@
       <div class="title-card">
         <h1>Cadastro de morador</h1>
       </div>
-      <form>
+      <form [formGroup]="formRegister" (ngSubmit)="submit()">
         <div class="input-line">
           <div class="input-area">
             <label for="name">Nome*</label>
-            <input type="text" id="name" placeholder="Nome completo" />
+            <input
+              formControlName="name"
+              type="text"
+              id="name"
+              placeholder="Nome completo"
+            />
+            <div
+              *ngIf="formRegister.get('name')?.invalid && formRegister.get('name')?.touched"
+              class="error-message"
+            >
+              Nome é obrigatório e deve ter pelo menos 3 caracteres.
+            </div>
           </div>
           <div class="input-area">
             <label for="email">Email*</label>
-            <input type="text" id="email" placeholder="Digite seu e-mail" />
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              placeholder="Digite seu e-mail"
+            />
+            <div
+              *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched"
+              class="error-message"
+            >
+              E-mail é obrigatório e deve ser válido.
+            </div>
           </div>
         </div>
         <div class="input-line">
           <div class="input-area">
             <label for="phoneNumber">Telefone*</label>
             <input
+              formControlName="phoneNumber"
               type="text"
               id="phoneNumber"
               placeholder="Digite seu telefone"
             />
+            <div
+              *ngIf="formRegister.get('phoneNumber')?.invalid && formRegister.get('phoneNumber')?.touched"
+              class="error-message"
+            >
+              Telefone é obrigatório e deve ter pelo menos 11 caracteres.
+            </div>
           </div>
           <div class="input-area">
             <label for="cpf">CPF*</label>
-            <input type="text" id="cpf" placeholder="Digite seu CPF" />
+            <input
+              formControlName="cpf"
+              type="text"
+              id="cpf"
+              placeholder="Digite seu CPF"
+            />
+            <div
+              *ngIf="formRegister.get('cpf')?.invalid && formRegister.get('cpf')?.touched"
+              class="error-message"
+            >
+              CPF é obrigatório e deve ter pelo menos 11 caracteres.
+            </div>
           </div>
         </div>
         <div class="input-line">
           <div class="input-area">
             <label for="address">Endereço*</label>
-            <input type="text" id="address" placeholder="Digite seu endereço" />
+            <input
+              formControlName="address"
+              type="text"
+              id="address"
+              placeholder="Digite seu endereço"
+            />
+            <div
+              *ngIf="formRegister.get('address')?.invalid && formRegister.get('address')?.touched"
+              class="error-message"
+            >
+              Endereço é obrigatório.
+            </div>
           </div>
           <div class="input-area">
             <label for="apartment">Apartamento*</label>
             <input
-              type="text"
+              formControlName="apartment"
+              type="number"
               id="apartment"
               placeholder="Nº do seu apartamento"
             />
+            <div
+              *ngIf="formRegister.get('apartment')?.invalid && formRegister.get('apartment')?.touched"
+              class="error-message"
+            >
+              Número do apartamento é obrigatório.
+            </div>
           </div>
         </div>
         <div class="input-line">
           <div class="input-area">
             <label for="password">Senha*</label>
             <input
+              formControlName="password"
               type="password"
               id="password"
               placeholder="Sua senha com 6 dígitos"
             />
+            <div
+              *ngIf="formRegister.get('password')?.invalid && formRegister.get('password')?.touched"
+              class="error-message"
+            >
+              Senha é obrigatória e deve ter pelo menos 6 caracteres.
+            </div>
           </div>
           <div class="input-area">
             <label for="passwordConfirmation">Repetir sua senha*</label>
             <input
+              formControlName="passwordConfirm"
               type="password"
               id="passwordConfirmation"
               placeholder="Confirme sua senha"
             />
+            <div
+              *ngIf="formRegister.get('passwordConfirm')?.invalid && formRegister.get('passwordConfirm')?.touched"
+              class="error-message"
+            >
+              Confirmação de senha é obrigatória e deve ter pelo menos 6
+              caracteres.
+            </div>
           </div>
         </div>
+        <div class="button-area">
+          <button type="submit">Cadastrar-se</button>
+          <button type="button" (click)="navigate()">Cancelar</button>
+        </div>
       </form>
-      <div class="button-area">
-        <button type="submit">Cadastrar-se</button>
-        <button type="button">Cancelar</button>
-      </div>
     </div>
   </div>
 </main>
