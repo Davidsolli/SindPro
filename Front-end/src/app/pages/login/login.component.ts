@@ -20,7 +20,7 @@ interface LoginForm {
   imports: [ReactiveFormsModule],
   providers: [LoginService],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'], // Corrigido para styleUrls
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm!: FormGroup<LoginForm>;

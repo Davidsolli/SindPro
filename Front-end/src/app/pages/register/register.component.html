@@ -19,7 +19,7 @@
               *ngIf="formRegister.get('name')?.invalid && formRegister.get('name')?.touched"
               class="error-message"
             >
-              Nome é obrigatório e deve ter pelo menos 3 caracteres.
+              <p>Nome é obrigatório e deve ter pelo menos 3 caracteres.</p>
             </div>
           </div>
           <div class="input-area">
@@ -34,7 +34,7 @@
               *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched"
               class="error-message"
             >
-              E-mail é obrigatório e deve ser válido.
+              <p>E-mail é obrigatório e deve ser válido.</p>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
               *ngIf="formRegister.get('phoneNumber')?.invalid && formRegister.get('phoneNumber')?.touched"
               class="error-message"
             >
-              Telefone é obrigatório e deve ter pelo menos 11 caracteres.
+              <p>Telefone é obrigatório e deve ter pelo menos 11 caracteres.</p>
             </div>
           </div>
           <div class="input-area">
@@ -66,7 +66,7 @@
               *ngIf="formRegister.get('cpf')?.invalid && formRegister.get('cpf')?.touched"
               class="error-message"
             >
-              CPF é obrigatório e deve ter pelo menos 11 caracteres.
+              <p>CPF é obrigatório e deve ter pelo menos 11 caracteres.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
               *ngIf="formRegister.get('address')?.invalid && formRegister.get('address')?.touched"
               class="error-message"
             >
-              Endereço é obrigatório.
+              <p>Endereço é obrigatório.</p>
             </div>
           </div>
           <div class="input-area">
@@ -98,7 +98,7 @@
               *ngIf="formRegister.get('apartment')?.invalid && formRegister.get('apartment')?.touched"
               class="error-message"
             >
-              Número do apartamento é obrigatório.
+              <p>Número do apartamento é obrigatório.</p>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@
               *ngIf="formRegister.get('password')?.invalid && formRegister.get('password')?.touched"
               class="error-message"
             >
-              Senha é obrigatória e deve ter pelo menos 6 caracteres.
+              <p>Senha é obrigatória e deve ter pelo menos 6 caracteres.</p>
             </div>
           </div>
           <div class="input-area">
@@ -130,8 +130,10 @@
               *ngIf="formRegister.get('passwordConfirm')?.invalid && formRegister.get('passwordConfirm')?.touched"
               class="error-message"
             >
-              Confirmação de senha é obrigatória e deve ter pelo menos 6
-              caracteres.
+              <p>
+                Confirmação de senha é obrigatória e deve ter pelo menos 6
+                caracteres.
+              </p>
             </div>
           </div>
         </div>

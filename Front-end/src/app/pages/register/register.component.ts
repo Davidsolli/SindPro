@@ -27,6 +27,7 @@ interface RegisterForm {
   selector: 'app-register',
   standalone: true,
   imports: [HeaderComponent, ReactiveFormsModule, NgIf],
+  providers: [RegisterService],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
@@ -81,13 +82,12 @@ export class RegisterComponent {
       address: this.formRegister.value.address!,
       apartment: this.formRegister.value.apartment!,
       password: this.formRegister.value.password!,
-      // passwordConfirm não deve ser enviado para o backend
     };
 
     this.registerService.register(RegisterData).subscribe({
       next: () => {
         this.toastr.success('Cadastro realizado com sucesso!');
-        this.router.navigate(['']);
+        this.router.navigate(['register-success']);
       },
       error: () => {
         this.toastr.error('Erro ao realizar o cadastro.');
