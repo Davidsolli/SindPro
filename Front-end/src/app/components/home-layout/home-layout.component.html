@@ -1,0 +1,30 @@
+<main>
+  <aside>
+    <div class="menu-logo">
+      <img src="/assets/svgs/Logo.svg" alt="logo" />
+      <h4>Sistema de Administração de Condomínio</h4>
+    </div>
+    <div class="menu-home-options">
+      <button class="menu-home-options-button" (click)="navigate('warnings')">
+        <img src="/assets/svgs/home/mega-fone.svg" alt="mega-fone" />
+        <p>Avisos</p>
+      </button>
+      <button class="menu-home-options-button" (click)="navigate('')">
+        <img src="/assets/svgs/home/Dollar-sign.svg" alt="mega-fone" />
+        <p>Gerenciamento de cobranças</p>
+      </button>
+      <button class="menu-home-options-button" (click)="navigate('')">
+        <img src="/assets/svgs/home/Users.svg" alt="mega-fone" />
+        <p>Espaço comum</p>
+      </button>
+      <button class="menu-home-options-button" (click)="navigate('')">
+        <img src="/assets/svgs/home/visitantes.svg" alt="mega-fone" />
+        <p>Visitantes</p>
+      </button>
+    </div>
+  </aside>
+  <section class="main-content">
+    <h1>{{ title }}</h1>
+    <ng-content></ng-content>
+  </section>
+</main>

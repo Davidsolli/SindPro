@@ -6,6 +6,8 @@ import { PathLocationStrategy } from '@angular/common';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordSuccessComponent } from './pages/reset-password/reset-password-success/reset-password-success.component';
 import { ResetPasswordFormComponent } from './pages/reset-password/reset-password-form/reset-password-form.component';
+import { WarningsComponent } from './pages/warnings/warnings.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
     {
@@ -31,5 +33,10 @@ export const routes: Routes = [
     {
         path: "reset-password-form",
         component: ResetPasswordFormComponent
+    },
+    {
+        path: "warnings",
+        component: WarningsComponent,
+        canActivate: [AuthGuardService]
     }
 ];

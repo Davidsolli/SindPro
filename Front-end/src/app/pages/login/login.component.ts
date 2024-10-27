@@ -50,7 +50,7 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           this.toastr.success('Login feito com sucesso!');
-          this.router.navigate(['']);
+          this.router.navigate(['warnings']);
         },
         error: () => this.toastr.error('Erro inesperado, tente novamente.'),
       });

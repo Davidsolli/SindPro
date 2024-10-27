@@ -14,7 +14,7 @@ export class ResetPasswordComponent {
 
   constructor(private router: Router) {}
 
-  navigate() {
-    this.router.navigate(['reset-password-success']);
+  navigate(route: string) {
+    this.router.navigate([route]);
   }
 }
