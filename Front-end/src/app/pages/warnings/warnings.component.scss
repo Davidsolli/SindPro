@@ -1,0 +1,94 @@
+.read {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  color: #2364da;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 4px;
+  a {
+    cursor: pointer;
+  }
+}
+
+.card-welcome {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-top: 10px;
+
+  h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.add-warning {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2364da;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(#2364da, 10%);
+    }
+  }
+}
+
+.view-warning {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .view-warning-card {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    max-width: 367px;
+
+    .view-warning-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+
+    button {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #2364da;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken(#fff, 10%);
+        }
+    }
+}
