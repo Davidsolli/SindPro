@@ -60,6 +60,7 @@ public class AuthenticationController {
         user.setCpf(registerDTO.getCpf());
         user.setAddress(registerDTO.getAddress());
         user.setApartment(registerDTO.getApartment());
+        user.setUserRole(registerDTO.getUserRole()); // <- temporario
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
     }
