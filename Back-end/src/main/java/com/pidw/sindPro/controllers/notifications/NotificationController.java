@@ -1,7 +1,7 @@
 package com.pidw.sindPro.controllers.notifications;
 
-import com.pidw.sindPro.dtos.notifications.AnnouncementDTO;
-import com.pidw.sindPro.service.notifications.AnnouncementService;
+import com.pidw.sindPro.dtos.notifications.NotificationDTO;
+import com.pidw.sindPro.service.notifications.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,41 +12,41 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/announcements")
-public class AnnouncementController {
+@RequestMapping(value = "/notifications")
+public class NotificationController {
 
     @Autowired
-    private AnnouncementService announcementService;
+    private NotificationService notificationService;
 
     @PostMapping
-    public ResponseEntity<AnnouncementDTO> create(@RequestBody AnnouncementDTO announcementDTO) {
-        announcementDTO = announcementService.create(announcementDTO);
+    public ResponseEntity<NotificationDTO> create(@RequestBody NotificationDTO notificationDTO) {
+        notificationDTO = notificationService.create(notificationDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/id").buildAndExpand(announcementDTO.getId()).toUri();
-        return ResponseEntity.created(uri).body(announcementDTO);
+                .path("/id").buildAndExpand(notificationDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(notificationDTO);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<AnnouncementDTO> findById(@PathVariable Long id) {
-        AnnouncementDTO announcementDTO = announcementService.findById(id);
-        return ResponseEntity.ok(announcementDTO);
+    public ResponseEntity<NotificationDTO> findById(@PathVariable Long id) {
+        NotificationDTO notificationDTO = notificationService.findById(id);
+        return ResponseEntity.ok(notificationDTO);
     }
 
     @GetMapping
-    public ResponseEntity<Page<AnnouncementDTO>> findAll(Pageable pageable) {
-        Page<AnnouncementDTO> result = announcementService.findAll(pageable);
+    public ResponseEntity<Page<NotificationDTO>> findAll(Pageable pageable) {
+        Page<NotificationDTO> result = notificationService.findAll(pageable);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AnnouncementDTO> update(@PathVariable Long id, @RequestBody AnnouncementDTO announcementDTO) {
-        announcementDTO = announcementService.update(announcementDTO, id);
-        return ResponseEntity.ok(announcementDTO);
+    public ResponseEntity<NotificationDTO> update(@PathVariable Long id, @RequestBody NotificationDTO notificationDTO) {
+        notificationDTO = notificationService.update(notificationDTO, id);
+        return ResponseEntity.ok(notificationDTO);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        announcementService.delete(id);
+        notificationService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

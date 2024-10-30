@@ -24,9 +24,9 @@ public class Reserva {
     @JoinColumn(name = "espaco_id", nullable = false)
     private EspacoComum espacoComum;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "morador_id", nullable = false)
-    private Morador morador;
+    private Morador morador;*/
 
     @Column(name = "data_reserva", nullable = false)
     private LocalDate dataReserva;

@@ -21,9 +21,9 @@ public class BloqueioAcesso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "morador_id", nullable = false)
-    private Morador morador;
+    private Morador morador;*/
 
     @Column(name = "data_inicio", nullable = false)
     private LocalDate dataInicio;

@@ -3,7 +3,7 @@ package com.pidw.sindPro.controllers.auth;
 import com.pidw.sindPro.domains.users.User;
 import com.pidw.sindPro.dtos.auth.LoginDTO;
 import com.pidw.sindPro.dtos.auth.LoginResponseDTO;
-import com.pidw.sindPro.dtos.auth.RegisterDTO;
+import com.pidw.sindPro.dtos.users.UserDTO;
 import com.pidw.sindPro.infra.security.TokenService;
 import com.pidw.sindPro.repositories.UserRepository;
 import jakarta.validation.Valid;
@@ -42,25 +42,25 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<Void> register(@RequestBody @Valid RegisterDTO registerDTO) {
-        if (this.userRepository.findByEmail(registerDTO.getEmail()) != null) return ResponseEntity.badRequest().build();
+    public ResponseEntity<Void> register(@RequestBody @Valid UserDTO userDTO) {
+        if (this.userRepository.findByEmail(userDTO.getEmail()) != null) return ResponseEntity.badRequest().build();
         User user = new User();
-        String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.getPassword());
+        String encryptedPassword = new BCryptPasswordEncoder().encode(userDTO.getPassword());
         user.setPassword(encryptedPassword);
-        copyDtoToEntity(user, registerDTO);
+        copyDtoToEntity(user, userDTO);
         this.userRepository.save(user);
 
         return ResponseEntity.ok().build();
     }
 
-    private void copyDtoToEntity(User user, RegisterDTO registerDTO) {
-        user.setName(registerDTO.getName());
-        user.setEmail(registerDTO.getEmail());
-        user.setPhoneNumber(registerDTO.getPhoneNumber());
-        user.setCpf(registerDTO.getCpf());
-        user.setAddress(registerDTO.getAddress());
-        user.setApartment(registerDTO.getApartment());
-        user.setUserRole(registerDTO.getUserRole()); // <- temporario
+    private void copyDtoToEntity(User user, UserDTO userDTO) {
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setCpf(userDTO.getCpf());
+        user.setAddress(userDTO.getAddress());
+        user.setApartment(userDTO.getApartment());
+        user.setUserRole(userDTO.getUserRole()); // <- temporario
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
     }

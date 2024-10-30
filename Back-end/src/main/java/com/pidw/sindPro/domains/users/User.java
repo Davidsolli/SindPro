@@ -1,6 +1,6 @@
 package com.pidw.sindPro.domains.users;
 
-import com.pidw.sindPro.domains.notifications.Announcement;
+import com.pidw.sindPro.domains.notifications.Notification;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +37,10 @@ public class User implements UserDetails {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "sender")
-    private List<Announcement> announcements = new ArrayList<>();
+    private List<Notification> notifications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Visitor> visitors = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

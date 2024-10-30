@@ -1,0 +1,51 @@
+package com.pidw.sindPro.controllers;
+
+import com.pidw.sindPro.dtos.users.VisitorDTO;
+import com.pidw.sindPro.service.users.VisitorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/visitors")
+public class VisitorController {
+
+    @Autowired
+    private VisitorService visitorService;
+
+    @PostMapping
+    public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO) {
+        visitorDTO = visitorService.create(visitorDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(visitorDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(visitorDTO);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<VisitorDTO> findById(@PathVariable Long id) {
+        VisitorDTO visitorDTO = visitorService.findById(id);
+        return ResponseEntity.ok(visitorDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<VisitorDTO>> findAll() {
+        List<VisitorDTO> result = visitorService.findAll();
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<VisitorDTO> update(@PathVariable Long id, @RequestBody VisitorDTO visitorDTO) {
+        visitorDTO = visitorService.update(id, visitorDTO);
+        return ResponseEntity.ok(visitorDTO);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        visitorService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}

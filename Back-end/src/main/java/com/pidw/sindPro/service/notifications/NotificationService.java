@@ -1,8 +1,8 @@
 package com.pidw.sindPro.service.notifications;
 
-import com.pidw.sindPro.domains.notifications.Announcement;
-import com.pidw.sindPro.dtos.notifications.AnnouncementDTO;
-import com.pidw.sindPro.repositories.AnnouncementRepository;
+import com.pidw.sindPro.domains.notifications.Notification;
+import com.pidw.sindPro.dtos.notifications.NotificationDTO;
+import com.pidw.sindPro.repositories.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,55 +12,54 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 @Service
-public class AnnouncementService {
+public class NotificationService {
 
     @Autowired
-    private AnnouncementRepository announcementRepository;
+    private NotificationRepository notificationRepository;
 
     @Transactional
-    public AnnouncementDTO create(AnnouncementDTO announcementDTO) {
-        Announcement announcement = new Announcement();
-        copyDtoToEntity(announcementDTO, announcement);
-        announcement = announcementRepository.save(announcement);
-        return new AnnouncementDTO(announcement);
+    public NotificationDTO create(NotificationDTO notificationDTO) {
+        Notification notification = new Notification();
+        createEntity(notificationDTO, notification);
+        notification = notificationRepository.save(notification);
+        return new NotificationDTO(notification);
     }
 
     @Transactional(readOnly = true)
-    public AnnouncementDTO findById(Long id) {
-        Announcement announcement = announcementRepository.findById(id).orElseThrow();
-        return new AnnouncementDTO(announcement);
+    public NotificationDTO findById(Long id) {
+        Notification notification = notificationRepository.findById(id).orElseThrow();
+        return new NotificationDTO(notification);
     }
 
     @Transactional(readOnly = true)
-    public Page<AnnouncementDTO> findAll(Pageable pageable) {
-        Page<Announcement> result = announcementRepository.findAll(pageable);
-        return result.map(AnnouncementDTO::new);
+    public Page<NotificationDTO> findAll(Pageable pageable) {
+        Page<Notification> result = notificationRepository.findAll(pageable);
+        return result.map(NotificationDTO::new);
     }
 
     @Transactional
-    public AnnouncementDTO update(AnnouncementDTO announcementDTO, Long id) {
-        Announcement announcement = announcementRepository.getReferenceById(id);
-        updateEntity(announcementDTO, announcement);
-        announcement = announcementRepository.save(announcement);
-        return new AnnouncementDTO(announcement);
+    public NotificationDTO update(NotificationDTO notificationDTO, Long id) {
+        Notification notification = notificationRepository.getReferenceById(id);
+        updateEntity(notificationDTO, notification);
+        notification = notificationRepository.save(notification);
+        return new NotificationDTO(notification);
     }
 
     @Transactional
     public void delete(Long id) {
-        announcementRepository.deleteById(id);
+        notificationRepository.deleteById(id);
     }
 
-    private void copyDtoToEntity(AnnouncementDTO announcementDTO, Announcement announcement) {
-        announcement.setTitle(announcementDTO.getTitle());
-        announcement.setMessage(announcementDTO.getMessage());
-        announcement.setSent(LocalDateTime.now());
-        announcement.setCreatedAt(LocalDateTime.now());
-        announcement.setUpdatedAt(LocalDateTime.now());
+    private void createEntity(NotificationDTO notificationDTO, Notification notification) {
+        notification.setTitle(notificationDTO.getTitle());
+        notification.setMessage(notificationDTO.getMessage());
+        notification.setCreatedAt(LocalDateTime.now());
+        notification.setUpdatedAt(LocalDateTime.now());
     }
 
-    private void updateEntity(AnnouncementDTO announcementDTO, Announcement announcement) {
-        announcement.setTitle(announcementDTO.getTitle());
-        announcement.setMessage(announcementDTO.getMessage());
-        announcement.setUpdatedAt(LocalDateTime.now());
+    private void updateEntity(NotificationDTO notificationDTO, Notification notification) {
+        notification.setTitle(notificationDTO.getTitle());
+        notification.setMessage(notificationDTO.getMessage());
+        notification.setUpdatedAt(LocalDateTime.now());
     }
 }

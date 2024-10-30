@@ -1,32 +1,34 @@
-package com.pidw.sindPro.domains.notifications;
+package com.pidw.sindPro.domains.users;
 
-
-import com.pidw.sindPro.domains.users.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_announcement")
-public class Notification {
+@Table(name = "tb_visitor")
+public class Visitor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    @Column(columnDefinition = "TEXT")
-    private String message;
+    private String name;
+    private String document;
 
     @ManyToOne
-    @JoinColumn(name = "sender_id")
-    private User sender;
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    private LocalDate visitDate;
+    private LocalTime arrived;
+    private LocalTime exit;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

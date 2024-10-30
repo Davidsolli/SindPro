@@ -18,9 +18,9 @@ public class Ocorrencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "morador_id", nullable = false)
-    private Morador morador;
+    private Morador morador;*/
 
     @Column(nullable = false, length = 50)
     private String tipo;
