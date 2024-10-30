@@ -1,7 +1,9 @@
 package com.pidw.sindPro.service.users;
 
+import com.pidw.sindPro.domains.users.User;
 import com.pidw.sindPro.domains.users.Visitor;
 import com.pidw.sindPro.dtos.users.VisitorDTO;
+import com.pidw.sindPro.repositories.UserRepository;
 import com.pidw.sindPro.repositories.VisitorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +19,13 @@ public class VisitorService {
     private VisitorRepository visitorRepository;
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Transactional
-    public VisitorDTO create(VisitorDTO visitorDTO) {
+    public VisitorDTO create(VisitorDTO visitorDTO, Long userId) {
         Visitor visitor = new Visitor();
         createEntity(visitor, visitorDTO);
-        visitor.setUser(userService.getAuthenticatedUser());
+        visitor.setUser(userRepository.getReferenceById(userId));
         visitor = visitorRepository.save(visitor);
         return new VisitorDTO(visitor);
     }
@@ -35,8 +37,9 @@ public class VisitorService {
     }
 
     @Transactional(readOnly = true)
-    public List<VisitorDTO> findAll() {
-        List<Visitor> result = visitorRepository.findAllByEmail(userService.getAuthenticatedUserEmail());
+    public List<VisitorDTO> findAll(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+        List<Visitor> result = visitorRepository.findAllByEmail(user.getEmail());
         return result.stream().map(VisitorDTO::new).toList();
     }
     

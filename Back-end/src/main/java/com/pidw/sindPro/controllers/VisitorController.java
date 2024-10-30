@@ -17,9 +17,9 @@ public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
-    @PostMapping
-    public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO) {
-        visitorDTO = visitorService.create(visitorDTO);
+    @PostMapping(value = "/{userid}")
+    public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO, @PathVariable Long userId) {
+        visitorDTO = visitorService.create(visitorDTO, userId);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(visitorDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(visitorDTO);
@@ -31,9 +31,9 @@ public class VisitorController {
         return ResponseEntity.ok(visitorDTO);
     }
 
-    @GetMapping
-    public ResponseEntity<List<VisitorDTO>> findAll() {
-        List<VisitorDTO> result = visitorService.findAll();
+    @GetMapping(value = "/{userId}")
+    public ResponseEntity<List<VisitorDTO>> findAll(@PathVariable Long userId) {
+        List<VisitorDTO> result = visitorService.findAll(userId);
         return ResponseEntity.ok(result);
     }
 

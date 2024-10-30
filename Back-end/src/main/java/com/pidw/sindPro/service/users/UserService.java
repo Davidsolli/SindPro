@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -30,5 +32,11 @@ public class UserService {
     public UserDTO findMe() {
         User user = getAuthenticatedUser();
         return new UserDTO(user);
+    }
+
+    @Transactional
+    public List<UserDTO> findAll() {
+        /*TODO*/
+        return null;
     }
 }
