@@ -17,11 +17,11 @@ public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
-    @PostMapping(value = "/{userid}")
+    @PostMapping(value = "/{userId}")
     public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO, @PathVariable Long userId) {
         visitorDTO = visitorService.create(visitorDTO, userId);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(visitorDTO.getId()).toUri();
+                .path("/{userId}").buildAndExpand(visitorDTO.getUserId()).toUri();
         return ResponseEntity.created(uri).body(visitorDTO);
     }
 
@@ -31,7 +31,7 @@ public class VisitorController {
         return ResponseEntity.ok(visitorDTO);
     }
 
-    @GetMapping(value = "/{userId}")
+    @GetMapping(value = "/all/{userId}")
     public ResponseEntity<List<VisitorDTO>> findAll(@PathVariable Long userId) {
         List<VisitorDTO> result = visitorService.findAll(userId);
         return ResponseEntity.ok(result);

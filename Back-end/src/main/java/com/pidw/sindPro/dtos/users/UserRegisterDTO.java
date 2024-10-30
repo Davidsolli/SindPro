@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserDTO {
+public class UserRegisterDTO {
 
     private Long id;
     private String name;
@@ -19,7 +19,7 @@ public class UserDTO {
     private Integer apartment;
     private UserRole userRole;
 
-    public UserDTO(User user) {
+    public UserRegisterDTO(User user) {
         id = user.getId();
         name = user.getName();
         email = user.getEmail();
