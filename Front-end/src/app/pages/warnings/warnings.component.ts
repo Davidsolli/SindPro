@@ -50,4 +50,17 @@ export class WarningsComponent implements OnInit {
       },
     });
   }
+
+  deleteNotification(id: number) {
+    this.notificationService.deleteNotification(id).subscribe(
+      () => {
+        this.notifications = this.notifications.filter(
+          (notification) => notification.id !== id
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }

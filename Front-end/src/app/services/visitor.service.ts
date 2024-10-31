@@ -14,7 +14,9 @@ export class VisitorService {
   getVisitors(userId: number): Observable<Visitor[]> {
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Visitor[]>(`${this.apiUrl}/all/${userId}`, {headers});
+    return this.http.get<Visitor[]>(`${this.apiUrl}/all/${userId}`, {
+      headers,
+    });
   }
 
   deleteVisitor(id: number) {

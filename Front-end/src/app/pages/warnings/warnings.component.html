@@ -24,7 +24,9 @@
       </div>
       <p>{{ notification.message }}</p>
       <div class="read">
-        <a>Leia mais</a>
+        <button (click)="deleteNotification(notification.id)">
+          <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
+        </button>
       </div>
     </div>
   </div>

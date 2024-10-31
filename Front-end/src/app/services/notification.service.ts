@@ -15,11 +15,20 @@ export class NotificationService {
   getNotifications(page: number, size: number): Observable<Page<Notification>> {
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    
+
     let params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
 
-    return this.http.get<Page<Notification>>(`${this.apiUrl}/notifications`, { params, headers });
+    return this.http.get<Page<Notification>>(`${this.apiUrl}/notifications`, {
+      params,
+      headers,
+    });
+  }
+
+  deleteNotification(id: number) {
+    const token = sessionStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/notifications/${id}`, { headers });
   }
 }
