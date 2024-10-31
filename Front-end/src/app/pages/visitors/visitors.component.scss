@@ -1,0 +1,59 @@
+.view-visitors {
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    button {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border: none;
+      background-color: #2364da;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken(#2364da, 10%);
+      }
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+
+    .table-name {
+      text-align: left;
+      width: 58%;
+    }
+
+    th {
+      font-size: 14px;
+    }
+
+    td {
+      font-size: 12px;
+
+      button {
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #afafaf;
+    }
+  }
+}

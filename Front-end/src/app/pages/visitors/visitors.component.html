@@ -1,0 +1,26 @@
+<app-home-layout title="Visitantes">
+  <div class="view-visitors">
+    <div class="btn">
+      <button>
+        <img src="/assets/svgs/visitor/user-white.svg" alt="user-white" />Novo
+        visitante
+      </button>
+    </div>
+    <table>
+      <tr>
+        <th class="table-name">Nome</th>
+        <th>Identidade</th>
+        <th>Apartamento</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let visitor of visitors">
+        <td class="table-name">{{visitor.name}}</td>
+        <td>{{visitor.document}}</td>
+        <td>{{visitor.apartment}}</td>
+        <td>
+          <button><img src="/assets/svgs/visitor/trash.svg" alt="" /></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</app-home-layout>

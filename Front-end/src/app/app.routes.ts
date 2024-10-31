@@ -8,35 +8,41 @@ import { ResetPasswordSuccessComponent } from './pages/reset-password/reset-pass
 import { ResetPasswordFormComponent } from './pages/reset-password/reset-password-form/reset-password-form.component';
 import { WarningsComponent } from './pages/warnings/warnings.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { VisitorsComponent } from './pages/visitors/visitors.component';
 
 export const routes: Routes = [
-    {
-        path: "",
-        component: LoginComponent
-    },
-    {
-        path: "register",
-        component: RegisterComponent
-    },
-    {
-        path: "register-success",
-        component: RegisterSuccessComponent
-    },
-    {
-        path: "reset-password",
-        component: ResetPasswordComponent
-    },
-    {
-        path: "reset-password-success",
-        component: ResetPasswordSuccessComponent
-    },
-    {
-        path: "reset-password-form",
-        component: ResetPasswordFormComponent
-    },
-    {
-        path: "warnings",
-        component: WarningsComponent,
-        canActivate: [AuthGuardService]
-    }
+  {
+    path: '',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'register-success',
+    component: RegisterSuccessComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'reset-password-success',
+    component: ResetPasswordSuccessComponent,
+  },
+  {
+    path: 'reset-password-form',
+    component: ResetPasswordFormComponent,
+  },
+  {
+    path: 'warnings',
+    component: WarningsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'visitors',
+    component: VisitorsComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
