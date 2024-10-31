@@ -18,7 +18,9 @@
         <td>{{visitor.document}}</td>
         <td>{{visitor.apartment}}</td>
         <td>
-          <button><img src="/assets/svgs/visitor/trash.svg" alt="" /></button>
+          <button (click)="deleteVisitor(visitor.id)">
+            <img src="/assets/svgs/visitor/trash.svg" alt="Excluir visitante" />
+          </button>
         </td>
       </tr>
     </table>
