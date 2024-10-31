@@ -9,6 +9,7 @@ import { ResetPasswordFormComponent } from './pages/reset-password/reset-passwor
 import { WarningsComponent } from './pages/warnings/warnings.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { VisitorsComponent } from './pages/visitors/visitors.component';
+import { RentSpaceComponent } from './pages/rent-space/rent-space.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,11 @@ export const routes: Routes = [
   {
     path: 'visitors',
     component: VisitorsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'rent-space',
+    component: RentSpaceComponent,
     canActivate: [AuthGuardService],
   },
 ];

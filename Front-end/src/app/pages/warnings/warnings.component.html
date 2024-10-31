@@ -24,7 +24,10 @@
       </div>
       <p>{{ notification.message }}</p>
       <div class="read">
-        <button (click)="deleteNotification(notification.id)">
+        <button
+          *ngIf="user && user.userRole === 'ADMIN'"
+          (click)="deleteNotification(notification.id)"
+        >
           <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
         </button>
       </div>

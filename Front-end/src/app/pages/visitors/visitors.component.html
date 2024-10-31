@@ -1,7 +1,7 @@
 <app-home-layout title="Visitantes">
   <div class="view-visitors">
     <div class="btn">
-      <button>
+      <button *ngIf="user && user.userRole === 'ADMIN'">
         <img src="/assets/svgs/visitor/user-white.svg" alt="user-white" />Novo
         visitante
       </button>
@@ -18,7 +18,10 @@
         <td>{{visitor.document}}</td>
         <td>{{visitor.apartment}}</td>
         <td>
-          <button (click)="deleteVisitor(visitor.id)">
+          <button
+            *ngIf="user.userRole === 'ADMIN'"
+            (click)="deleteVisitor(visitor.id)"
+          >
             <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
           </button>
         </td>
