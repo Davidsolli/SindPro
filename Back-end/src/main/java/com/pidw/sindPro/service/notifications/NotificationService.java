@@ -36,8 +36,8 @@ public class NotificationService {
     }
 
     @Transactional(readOnly = true)
-    public Page<NotificationDTO> findAll(Pageable pageable) {
-        Page<Notification> result = notificationRepository.findAll(pageable);
+    public Page<NotificationDTO> findAllByReceiver(Pageable pageable, Long receiverId) {
+        Page<Notification> result = notificationRepository.findAllNotificationByReceiverId(pageable, receiverId);
         return result.map(NotificationDTO::new);
     }
 

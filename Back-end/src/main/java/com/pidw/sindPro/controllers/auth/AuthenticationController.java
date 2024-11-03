@@ -61,7 +61,7 @@ public class AuthenticationController {
         user.setCpf(userRegisterDTO.getCpf());
         user.setAddress(userRegisterDTO.getAddress());
         user.setApartment(userRegisterDTO.getApartment());
-        user.setUserRole(UserRole.RESIDENT);
+        user.setUserRole(userRegisterDTO.getUserRole()); // <- alterar
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
     }
