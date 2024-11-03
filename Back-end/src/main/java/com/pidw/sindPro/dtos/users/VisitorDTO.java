@@ -15,6 +15,7 @@ public class VisitorDTO {
     private Long id;
     private String name;
     private String document;
+    private Integer apartment;
     private LocalDate visitDate;
     private LocalTime arrived;
     private LocalTime exit;
@@ -26,6 +27,7 @@ public class VisitorDTO {
         id = visitor.getId();
         name = visitor.getName();
         document = visitor.getDocument();
+        apartment = visitor.getUser().getApartment();
         visitDate = visitor.getVisitDate();
         arrived = visitor.getArrived();
         exit = visitor.getExit();

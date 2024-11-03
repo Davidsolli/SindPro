@@ -18,10 +18,13 @@ public class NotificationDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    private Long receiverId;
+
     public NotificationDTO(Notification notification) {
         id = notification.getId();
         title = notification.getTitle();
         message = notification.getMessage();
+        receiverId = notification.getReceiver().getId();
         createdAt = notification.getCreatedAt();
         updatedAt = notification.getUpdatedAt();
     }

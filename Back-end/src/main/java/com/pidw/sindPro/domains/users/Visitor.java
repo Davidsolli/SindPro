@@ -20,15 +20,16 @@ public class Visitor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique = true)
     private String document;
+    private LocalDate visitDate; // Retirar
+    private LocalTime arrived; // Retirar
+    @Column(name = "exit_time")
+    private LocalTime exit; // Retirar
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    private LocalDate visitDate;
-    private LocalTime arrived;
-    private LocalTime exit;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

@@ -27,6 +27,10 @@ public class Notification {
     @JoinColumn(name = "sender_id")
     private User sender;
 
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

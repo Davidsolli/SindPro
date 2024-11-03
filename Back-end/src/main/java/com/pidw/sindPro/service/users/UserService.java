@@ -2,6 +2,7 @@ package com.pidw.sindPro.service.users;
 
 import com.pidw.sindPro.domains.users.User;
 import com.pidw.sindPro.dtos.users.UserRegisterDTO;
+import com.pidw.sindPro.dtos.users.UserResponseDTO;
 import com.pidw.sindPro.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,8 +36,8 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserRegisterDTO> findAll() {
+    public List<UserResponseDTO> findAll() {
         List<User> result = userRepository.findAll();
-        return result.stream().map(UserRegisterDTO::new).toList();
+        return result.stream().map(UserResponseDTO::new).toList();
     }
 }

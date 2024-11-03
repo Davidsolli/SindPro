@@ -37,7 +37,10 @@ public class User implements UserDetails {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "sender")
-    private List<Notification> notifications = new ArrayList<>();
+    private List<Notification> notificationsSent = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Notification> notificationsReceived = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Visitor> visitors = new ArrayList<>();

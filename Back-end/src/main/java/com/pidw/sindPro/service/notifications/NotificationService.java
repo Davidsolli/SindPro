@@ -3,6 +3,7 @@ package com.pidw.sindPro.service.notifications;
 import com.pidw.sindPro.domains.notifications.Notification;
 import com.pidw.sindPro.dtos.notifications.NotificationDTO;
 import com.pidw.sindPro.repositories.NotificationRepository;
+import com.pidw.sindPro.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +17,9 @@ public class NotificationService {
 
     @Autowired
     private NotificationRepository notificationRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public NotificationDTO create(NotificationDTO notificationDTO) {
@@ -55,6 +59,8 @@ public class NotificationService {
         notification.setMessage(notificationDTO.getMessage());
         notification.setCreatedAt(LocalDateTime.now());
         notification.setUpdatedAt(LocalDateTime.now());
+
+        notification.setReceiver(userRepository.getReferenceById(notificationDTO.getReceiverId()));
     }
 
     private void updateEntity(NotificationDTO notificationDTO, Notification notification) {

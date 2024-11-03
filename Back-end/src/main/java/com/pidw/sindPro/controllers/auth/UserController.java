@@ -1,6 +1,7 @@
 package com.pidw.sindPro.controllers.auth;
 
 import com.pidw.sindPro.dtos.users.UserRegisterDTO;
+import com.pidw.sindPro.dtos.users.UserResponseDTO;
 import com.pidw.sindPro.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserRegisterDTO>> findAll() {
-        List<UserRegisterDTO> result = userService.findAll();
+    public ResponseEntity<List<UserResponseDTO>> findAll() {
+        List<UserResponseDTO> result = userService.findAll();
         return ResponseEntity.ok(result);
     }
 }

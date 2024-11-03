@@ -1,6 +1,7 @@
 package com.pidw.sindPro.controllers.auth;
 
 import com.pidw.sindPro.domains.users.User;
+import com.pidw.sindPro.domains.users.UserRole;
 import com.pidw.sindPro.dtos.auth.LoginDTO;
 import com.pidw.sindPro.dtos.auth.LoginResponseDTO;
 import com.pidw.sindPro.dtos.users.UserRegisterDTO;
@@ -60,7 +61,7 @@ public class AuthenticationController {
         user.setCpf(userRegisterDTO.getCpf());
         user.setAddress(userRegisterDTO.getAddress());
         user.setApartment(userRegisterDTO.getApartment());
-        user.setUserRole(userRegisterDTO.getUserRole()); // <- temporario
+        user.setUserRole(UserRole.RESIDENT);
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
     }
