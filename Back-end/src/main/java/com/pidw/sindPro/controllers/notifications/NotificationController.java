@@ -32,9 +32,9 @@ public class NotificationController {
         return ResponseEntity.ok(notificationDTO);
     }
 
-    @GetMapping(value = "/all/{receiverId}")
-    public ResponseEntity<Page<NotificationDTO>> findAll(Pageable pageable, @PathVariable Long receiverId) {
-        Page<NotificationDTO> result = notificationService.findAllByReceiver(pageable, receiverId);
+    @GetMapping(value = "/all")
+    public ResponseEntity<Page<NotificationDTO>> findAll(Pageable pageable) {
+        Page<NotificationDTO> result = notificationService.findAllByReceiver(pageable);
         return ResponseEntity.ok(result);
     }
 

@@ -1,9 +1,11 @@
 package com.pidw.sindPro.service.notifications;
 
 import com.pidw.sindPro.domains.notifications.Notification;
+import com.pidw.sindPro.domains.users.User;
 import com.pidw.sindPro.dtos.notifications.NotificationDTO;
 import com.pidw.sindPro.repositories.NotificationRepository;
 import com.pidw.sindPro.repositories.UserRepository;
+import com.pidw.sindPro.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +23,9 @@ public class NotificationService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Transactional
     public NotificationDTO create(NotificationDTO notificationDTO) {
         Notification notification = new Notification();
@@ -36,8 +41,9 @@ public class NotificationService {
     }
 
     @Transactional(readOnly = true)
-    public Page<NotificationDTO> findAllByReceiver(Pageable pageable, Long receiverId) {
-        Page<Notification> result = notificationRepository.findAllNotificationByReceiverId(pageable, receiverId);
+    public Page<NotificationDTO> findAllByReceiver(Pageable pageable) {
+        User user = userService.getAuthenticatedUser();
+        Page<Notification> result = notificationRepository.findAllNotificationByReceiverId(pageable, user.getId());
         return result.map(NotificationDTO::new);
     }
 
