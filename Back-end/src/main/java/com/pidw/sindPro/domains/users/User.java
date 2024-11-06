@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private Integer Apartment;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+    private String passwordResetToken;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

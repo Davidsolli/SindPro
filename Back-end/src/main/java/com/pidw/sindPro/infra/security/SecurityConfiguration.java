@@ -46,6 +46,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/warnings/all").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/warnings/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/warnings/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/password/request-reset").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/password/reset-password").permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
