@@ -1,15 +1,14 @@
 <app-home-layout title="Avisos">
-  <div class="card-welcome">
-    <h3>seja bem vindo ao nosso condomínio</h3>
-    <p>
-      Bem-vindo ao nosso condomínio! Estamos felizes em tê-lo como parte da
-      nossa comunidade. Esperamos que você se sinta em casa e aproveite todas as
-      comodidades e a convivência tranquila que oferecemos. Se precisar de algo
-      ou tiver dúvidas, nossa equipe está à disposição para ajudar. Mais uma
-      vez, seja bem-vindo!
-    </p>
+  <div *ngFor="let warning of warnings" class="card-welcome">
+    <h3>{{warning.title}}</h3>
+    <p>{{warning.message}}</p>
     <div class="read">
-      <a>Leia mais</a>
+      <button
+        (click)="deleteWarning(warning.id)"
+        *ngIf="user?.userRole === 'ADMIN'"
+      >
+        <img src="/assets/svgs/visitor/trash.svg" alt="" />
+      </button>
     </div>
   </div>
   <div class="add-warning">

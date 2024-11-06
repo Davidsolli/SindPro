@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../models/page.model';
 import { Notification } from '../models/notification.model';
+import { Warning } from '../models/warning.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,23 +13,39 @@ export class NotificationService {
 
   constructor(private http: HttpClient) {}
 
-  getNotifications(page: number, size: number): Observable<Page<Notification>> {
+  getToken() {
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return headers;
+  }
 
+  getNotifications(page: number, size: number): Observable<Page<Notification>> {
+    const headers = this.getToken();
     let params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
 
-    return this.http.get<Page<Notification>>(`${this.apiUrl}/notifications`, {
-      params,
-      headers,
-    });
+    return this.http.get<Page<Notification>>(
+      `${this.apiUrl}/notifications/all`,
+      {
+        params,
+        headers,
+      }
+    );
+  }
+
+  getWarnings(): Observable<Warning[]> {
+    const headers = this.getToken();
+    return this.http.get<Warning[]>(`${this.apiUrl}/warnings/all`, { headers });
   }
 
   deleteNotification(id: number) {
-    const token = sessionStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = this.getToken();
     return this.http.delete(`${this.apiUrl}/notifications/${id}`, { headers });
+  }
+
+  deleteWarning(id: number): Observable<void> {
+    const headers = this.getToken();
+    return this.http.delete<void>(`${this.apiUrl}/warnings/${id}`, { headers });
   }
 }

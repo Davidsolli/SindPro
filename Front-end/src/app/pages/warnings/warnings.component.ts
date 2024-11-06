@@ -5,6 +5,7 @@ import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../models/notification.model';
+import { Warning } from '../../models/warning.model';
 
 @Component({
   selector: 'app-warnings',
@@ -16,6 +17,7 @@ import { Notification } from '../../models/notification.model';
 export class WarningsComponent implements OnInit {
   user!: User;
   notifications!: Notification[];
+  warnings!: Warning[];
   page = 0;
   size = 4;
   totalElements = 0;
@@ -31,11 +33,14 @@ export class WarningsComponent implements OnInit {
     this.userService.getUser().subscribe(
       (userData: User) => {
         this.user = userData;
+        this.notificationList(this.page, this.size);
       },
       (error) => {
         console.error('Erro ao buscar usuário:', error);
       }
     );
+
+    this.warningList();
   }
 
   notificationList(page: number, size: number) {
@@ -51,12 +56,31 @@ export class WarningsComponent implements OnInit {
     });
   }
 
+  warningList() {
+    this.notificationService.getWarnings().subscribe({
+      next: (response) => {
+        this.warnings = response;
+      },
+    });
+  }
+
   deleteNotification(id: number) {
     this.notificationService.deleteNotification(id).subscribe(
       () => {
         this.notifications = this.notifications.filter(
           (notification) => notification.id !== id
         );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  deleteWarning(id: number) {
+    this.notificationService.deleteWarning(id).subscribe(
+      () => {
+        this.warnings = this.warnings.filter((warning) => warning.id !== id);
       },
       (error) => {
         console.error(error);
