@@ -18,10 +18,7 @@
         <td>{{visitor.document}}</td>
         <td>{{visitor.apartment}}</td>
         <td>
-          <button
-            *ngIf="user.userRole === 'ADMIN'"
-            (click)="deleteVisitor(visitor.id)"
-          >
+          <button (click)="deleteVisitor(visitor.id)">
             <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
           </button>
         </td>

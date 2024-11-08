@@ -6,11 +6,19 @@ import { UserService } from '../../services/user.service';
 import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../models/notification.model';
 import { Warning } from '../../models/warning.model';
+import { CardMessageLayoutComponent } from '../../components/card-message-layout/card-message-layout.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-warnings',
   standalone: true,
-  imports: [HomeLayoutComponent, NgIf, NgFor, DatePipe],
+  imports: [
+    HomeLayoutComponent,
+    NgIf,
+    NgFor,
+    DatePipe,
+    CardMessageLayoutComponent,
+  ],
   templateUrl: './warnings.component.html',
   styleUrls: ['./warnings.component.scss'],
 })
@@ -21,13 +29,13 @@ export class WarningsComponent implements OnInit {
   page = 0;
   size = 4;
   totalElements = 0;
+  isModalOpen = false;
 
   constructor(
     private userService: UserService,
-    private notificationService: NotificationService
-  ) {
-    this.notificationList(this.page, this.size);
-  }
+    private notificationService: NotificationService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(
@@ -51,7 +59,7 @@ export class WarningsComponent implements OnInit {
         this.page = page;
       },
       error: (error) => {
-        console.error('Erro ao buscar notificações');
+        console.error('Erro ao buscar notificações:', error);
       },
     });
   }
@@ -86,5 +94,9 @@ export class WarningsComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  navigate(route: string) {
+    this.route.navigate([route]);
   }
 }

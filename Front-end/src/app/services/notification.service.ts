@@ -34,6 +34,18 @@ export class NotificationService {
     );
   }
 
+  createNotification(title: string, message: string): Observable<Warning> {
+    const headers = this.getToken();
+    return this.http.post<Warning>(
+      `${this.apiUrl}/warnings`,
+      {
+        title,
+        message,
+      },
+      { headers }
+    );
+  }
+
   getWarnings(): Observable<Warning[]> {
     const headers = this.getToken();
     return this.http.get<Warning[]>(`${this.apiUrl}/warnings/all`, { headers });

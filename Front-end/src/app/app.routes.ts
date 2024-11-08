@@ -10,6 +10,7 @@ import { WarningsComponent } from './pages/warnings/warnings.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { VisitorsComponent } from './pages/visitors/visitors.component';
 import { RentSpaceComponent } from './pages/rent-space/rent-space.component';
+import { CreateNotificationComponent } from './pages/warnings/create-notification/create-notification.component';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,11 @@ export const routes: Routes = [
   {
     path: 'rent-space',
     component: RentSpaceComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'create-notification',
+    component: CreateNotificationComponent,
     canActivate: [AuthGuardService],
   },
 ];

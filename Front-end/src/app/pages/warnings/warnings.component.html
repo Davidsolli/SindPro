@@ -1,25 +1,37 @@
 <app-home-layout title="Avisos">
+  <div class="add-warning">
+    <button
+      (click)="navigate('create-notification')"
+      *ngIf="user?.userRole === 'ADMIN'"
+    >
+      Adicionar Aviso
+    </button>
+  </div>
   <div *ngFor="let warning of warnings" class="card-welcome">
-    <h3>{{warning.title}}</h3>
-    <p>{{warning.message}}</p>
+    <h3>{{ warning.title }}</h3>
+    <p>{{ warning.message }}</p>
     <div class="read">
       <button
         (click)="deleteWarning(warning.id)"
         *ngIf="user?.userRole === 'ADMIN'"
       >
-        <img src="/assets/svgs/visitor/trash.svg" alt="" />
+        <img src="/assets/svgs/visitor/trash.svg" alt="Excluir Aviso" />
       </button>
     </div>
   </div>
-  <div class="add-warning">
+
+  <div class="add-notification">
     <h2>Ocorrências</h2>
-    <button *ngIf="user?.userRole === 'ADMIN'">Adicionar aviso</button>
+    <button (click)="navigate('#')" *ngIf="user?.userRole === 'ADMIN'">
+      Adicionar ocorrência
+    </button>
   </div>
+
   <div class="view-warning">
     <div class="view-warning-card" *ngFor="let notification of notifications">
       <div class="view-warning-card-title">
         <h3>{{ notification.title }}</h3>
-        <p>{{notification.createdAt | date: 'dd/MM/yyyy'}}</p>
+        <p>{{ notification.createdAt | date: 'dd/MM/yyyy' }}</p>
       </div>
       <p>{{ notification.message }}</p>
       <div class="read">
@@ -32,15 +44,16 @@
       </div>
     </div>
   </div>
+
   <div class="pagination">
     <button (click)="notificationList(page - 1, size)" [disabled]="page === 0">
-      <img src="/assets/svgs/warning/Vector-left.svg" alt="Vector-left" />
+      <img src="/assets/svgs/warning/Vector-left.svg" alt="Anterior" />
     </button>
     <button
       (click)="notificationList(page + 1, size)"
       [disabled]="(page + 1) * size >= totalElements"
     >
-      <img src="/assets/svgs/warning/Vector-right.svg" alt="Vector-right" />
+      <img src="/assets/svgs/warning/Vector-right.svg" alt="Próximo" />
     </button>
   </div>
 </app-home-layout>
