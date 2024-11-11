@@ -1,4 +1,4 @@
-package com.pidw.sindPro.domains;
+package com.pidw.sindPro.domains.spaces;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class Reserva {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "espaco_id", nullable = false)
-    private EspacoComum espacoComum;
+    private CommonSpaces commonSpaces;
 
     /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "morador_id", nullable = false)
