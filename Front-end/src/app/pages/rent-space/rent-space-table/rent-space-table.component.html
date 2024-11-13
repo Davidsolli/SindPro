@@ -1,22 +1,18 @@
 <app-home-layout title="Espaço Comum">
-  <div>
+  <div class="btn-view-spaces">
     <button (click)="navigate('rent-space')">Nova reserva</button>
   </div>
-  <table>
+  <table *ngIf="user">
     <tr>
-      <th>Local</th>
+      <th class="table-name">Local</th>
       <th>Data</th>
-      <th>horario</th>
-      <th>Data visita</th>
-      <th>cancelar</th>
+      <th>Cancelar</th>
     </tr>
-    <tr>
-      <td>Data</td>
-      <td>Data</td>
-      <td>Data</td>
-      <td>Data</td>
+    <tr *ngFor="let reservation of reservations">
+      <td class="table-name">{{ reservation.spaceName }}</td>
+      <td>{{ reservation.eventDate }}</td>
       <td>
-        <button>
+        <button *ngIf="reservation.userId === user.id">
           <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
         </button>
       </td>

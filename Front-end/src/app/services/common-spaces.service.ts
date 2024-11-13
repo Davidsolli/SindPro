@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonSpaces } from '../models/common-spaces.model';
+import { Reservation } from '../models/reservation.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,21 @@ export class CommonSpacesService {
 
   constructor(private http: HttpClient) {}
 
-  getAllSpaces(): Observable<CommonSpaces[]> {
+  getToken() {
     const token = sessionStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
+  getAllSpaces(): Observable<CommonSpaces[]> {
+    const headers = this.getToken();
     return this.http.get<CommonSpaces[]>(`${this.apiUrl}/common-spaces`, {
+      headers,
+    });
+  }
+
+  getAllReservation(): Observable<Reservation[]> {
+    const headers = this.getToken();
+    return this.http.get<Reservation[]>(`${this.apiUrl}/reservation`, {
       headers,
     });
   }

@@ -55,4 +55,8 @@ export class CreateNotificationComponent {
         error: () => {this.toastr.error('Error ao criar um aviso, tente novamente!')}
       });
   }
+
+  navigate(route: String) {
+    this.router.navigate([route]);
+  }
 }
