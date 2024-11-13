@@ -58,18 +58,12 @@ public class VisitorService {
     private void createEntity(Visitor visitor, VisitorDTO visitorDTO) {
         visitor.setName(visitorDTO.getName());
         visitor.setDocument(visitorDTO.getDocument());
-        visitor.setVisitDate(visitorDTO.getVisitDate());
-        visitor.setArrived(visitorDTO.getArrived());
-        visitor.setExit(visitorDTO.getExit());
         visitor.setCreatedAt(LocalDateTime.now());
         visitor.setUpdatedAt(LocalDateTime.now());
     }
 
     private void updateEntity(Visitor visitor, VisitorDTO visitorDTO) {
         visitor.setName(visitorDTO.getName());
-        visitor.setVisitDate(visitorDTO.getVisitDate());
-        visitor.setArrived(visitorDTO.getArrived());
-        visitor.setExit(visitorDTO.getExit());
         visitor.setUpdatedAt(LocalDateTime.now());
     }
 }

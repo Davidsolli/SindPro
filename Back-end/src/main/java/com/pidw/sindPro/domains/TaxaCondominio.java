@@ -20,9 +20,9 @@ public class TaxaCondominio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unidade_id", nullable = false)
-    private Unidade unidade;
+    private Apartment apartment;*/
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal valor;

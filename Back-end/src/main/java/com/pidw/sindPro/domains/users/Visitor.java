@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -22,10 +20,6 @@ public class Visitor {
     private String name;
     @Column(unique = true)
     private String document;
-    private LocalDate visitDate; // Retirar
-    private LocalTime arrived; // Retirar
-    @Column(name = "exit_time")
-    private LocalTime exit; // Retirar
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

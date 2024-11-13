@@ -1,6 +1,7 @@
 package com.pidw.sindPro.domains.users;
 
 import com.pidw.sindPro.domains.notifications.Notification;
+import com.pidw.sindPro.domains.spaces.Reservation;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,6 +46,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Visitor> visitors = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

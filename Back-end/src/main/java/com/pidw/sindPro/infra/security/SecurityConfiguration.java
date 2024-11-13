@@ -53,6 +53,11 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/common-spaces").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/common-spaces/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/common-spaces/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/reservation").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/reservation/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/reservation").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/reservation/{id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/reservation/{id}").authenticated()
 
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
