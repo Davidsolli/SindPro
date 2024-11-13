@@ -3,14 +3,14 @@ import { HomeLayoutComponent } from '../../../components/home-layout/home-layout
 import { Router } from '@angular/router';
 import { Reservation } from '../../../models/reservation.model';
 import { CommonSpacesService } from '../../../services/common-spaces.service';
-import { NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-rent-space-table',
   standalone: true,
-  imports: [HomeLayoutComponent, NgFor, NgIf],
+  imports: [HomeLayoutComponent, NgFor, NgIf, DatePipe],
   templateUrl: './rent-space-table.component.html',
   styleUrl: './rent-space-table.component.scss',
 })
@@ -37,6 +37,19 @@ export class RentSpaceTableComponent {
       },
       (error) => {
         console.error('Erro ao buscar usuário:', error);
+      }
+    );
+  }
+
+  deleteReservation(id: number) {
+    this.commonSpaceService.deleteReservation(id).subscribe(
+      () => {
+        this.reservations = this.reservations.filter(
+          (reservation) => reservation.id !== id
+        );
+      },
+      (error) => {
+        console.log('Erro ao excluir reserva', error);
       }
     );
   }

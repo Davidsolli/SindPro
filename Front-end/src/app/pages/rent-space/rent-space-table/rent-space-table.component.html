@@ -10,9 +10,12 @@
     </tr>
     <tr *ngFor="let reservation of reservations">
       <td class="table-name">{{ reservation.spaceName }}</td>
-      <td>{{ reservation.eventDate }}</td>
+      <td>{{ reservation.eventDate | date: 'dd/MM/yyyy' }}</td>
       <td>
-        <button *ngIf="reservation.userId === user.id">
+        <button
+          *ngIf="reservation.userId === user.id"
+          (click)="deleteReservation(reservation.id)"
+        >
           <img src="/assets/svgs/visitor/trash.svg" alt="Excluir" />
         </button>
       </td>

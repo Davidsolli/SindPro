@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
     NgIf,
     NgFor,
     DatePipe,
-    CardMessageLayoutComponent,
   ],
   templateUrl: './warnings.component.html',
   styleUrls: ['./warnings.component.scss'],

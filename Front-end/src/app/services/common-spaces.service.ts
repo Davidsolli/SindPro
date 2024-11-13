@@ -30,4 +30,11 @@ export class CommonSpacesService {
       headers,
     });
   }
+
+  deleteReservation(id: Number): Observable<void> {
+    const headers = this.getToken();
+    return this.http.delete<void>(`${this.apiUrl}/reservation/${id}`, {
+      headers,
+    });
+  }
 }
