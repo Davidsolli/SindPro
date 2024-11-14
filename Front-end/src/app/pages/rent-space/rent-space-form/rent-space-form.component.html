@@ -1,0 +1,34 @@
+<app-home-layout title="Espaço comum">
+  <form *ngIf="user" [formGroup]="rentSpaceForm" (ngSubmit)="submit()">
+    <h2>Reservar piscina</h2>
+    <div class="input-area">
+      <label for="name">Nome</label
+      ><input type="text" id="name" placeholder="{{user.name}}" disabled />
+    </div>
+    <div class="input-area">
+      <label for="apartment">Apartamento</label
+      ><input
+        type="number"
+        id="apartment"
+        placeholder="{{user.apartment}}"
+        disabled
+      />
+    </div>
+    <label for="eventDate">Data do Evento</label>
+    <input
+      type="date"
+      id="eventDate"
+      formControlName="eventDate"
+      name="eventDate"
+      [(ngModel)]="eventDate"
+    />
+
+    <div *ngIf="eventDate && !isDateValid()">
+      A data não pode ser anterior a hoje.
+    </div>
+    <div class="btn-area">
+      <button class="btn-submit">Salvar alteração</button>
+      <button class="btn-canceled">Cancelar</button>
+    </div>
+  </form>
+</app-home-layout>

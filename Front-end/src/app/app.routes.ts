@@ -11,6 +11,7 @@ import { VisitorsComponent } from './pages/visitors/visitors.component';
 import { RentSpaceComponent } from './pages/rent-space/rent-space.component';
 import { CreateNotificationComponent } from './pages/warnings/create-notification/create-notification.component';
 import { RentSpaceTableComponent } from './pages/rent-space/rent-space-table/rent-space-table.component';
+import { RentSpaceFormComponent } from './pages/rent-space/rent-space-form/rent-space-form.component';
 
 export const routes: Routes = [
   {
@@ -60,6 +61,11 @@ export const routes: Routes = [
   {
     path: 'rent-space-table',
     component: RentSpaceTableComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'reservations/new/:spaceId',
+    component: RentSpaceFormComponent,
     canActivate: [AuthGuardService],
   },
 ];

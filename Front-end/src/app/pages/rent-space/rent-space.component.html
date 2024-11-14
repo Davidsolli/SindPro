@@ -5,7 +5,11 @@
     </button>
   </div>
   <div class="places">
-    <button class="place-card-btn" *ngFor="let space of spaces">
+    <button
+      class="place-card-btn"
+      *ngFor="let space of spaces"
+      (click)="createReservation(space.id)"
+    >
       <img
         src="/assets/svgs/rent-space/swimming-pool.png"
         alt="swimming-pool"

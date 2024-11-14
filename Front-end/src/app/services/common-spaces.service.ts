@@ -24,6 +24,21 @@ export class CommonSpacesService {
     });
   }
 
+  createReservation(
+    eventDate: string,
+    spaceId: number
+  ): Observable<Reservation> {
+    const headers = this.getToken();
+    return this.http.post<Reservation>(
+      `${this.apiUrl}/reservation`,
+      {
+        eventDate,
+        spaceId,
+      },
+      { headers }
+    );
+  }
+
   getAllReservation(): Observable<Reservation[]> {
     const headers = this.getToken();
     return this.http.get<Reservation[]>(`${this.apiUrl}/reservation`, {

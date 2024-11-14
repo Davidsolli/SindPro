@@ -1,0 +1,55 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+
+  .input-area {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+input[type="date"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.btn-area {
+  button {
+    border-radius: 6px;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .btn-submit {
+    background-color: #2364da;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: darken(#2364da, 10%);
+    }
+  }
+
+  .btn-canceled {
+    border: 2px solid #2364da;
+    color: #2364da;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(#fff, 10%);
+    }
+  }
+}

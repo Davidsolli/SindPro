@@ -29,7 +29,11 @@ export class RentSpaceComponent {
     );
   }
 
-  navigate(route: String) {
+  navigate(route: string) {
     this.router.navigate([route]);
+  }
+
+  createReservation(spaceId: number) {
+    this.router.navigate(['/reservations/new', spaceId]);
   }
 }
