@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../../../services/notification.service';
 import { Router } from '@angular/router';
 
-interface NotificationForm {
+interface WarningForm {
   title: FormControl;
   message: FormControl;
 }
@@ -23,29 +23,29 @@ interface NotificationForm {
   styleUrl: './create-notification.component.scss',
 })
 export class CreateNotificationComponent {
-  notificationForm!: FormGroup<NotificationForm>;
+  warningForm!: FormGroup<WarningForm>;
 
   constructor(
     private toastr: ToastrService,
     private notificationService: NotificationService,
     private router: Router
   ) {
-    this.notificationForm = new FormGroup({
+    this.warningForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       message: new FormControl('', [Validators.required]),
     });
   }
 
   submit() {
-    if (this.notificationForm.invalid) {
+    if (this.warningForm.invalid) {
       this.toastr.error('Preencha todos os campos corretamente.');
       return;
     }
 
     this.notificationService
-      .createNotification(
-        this.notificationForm.value.title,
-        this.notificationForm.value.message
+      .createWarning(
+        this.warningForm.value.title,
+        this.warningForm.value.message
       )
       .subscribe({
         next: () => {

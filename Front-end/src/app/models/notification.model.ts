@@ -4,4 +4,5 @@ export interface Notification {
   message: string;
   createdAt: string;
   updateAt: string;
+  receiverId: number;
 }

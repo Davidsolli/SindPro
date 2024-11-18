@@ -11,9 +11,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(): Observable<User> {
+  getToken() {
     const token = sessionStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<User>(`${this.apiUrl}/users/me`, {headers});
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
+  getUser(): Observable<User> {
+    const headers = this.getToken();
+    return this.http.get<User>(`${this.apiUrl}/users/me`, { headers });
+  }
+
+  getUsersList(): Observable<User[]> {
+    const headers = this.getToken();
+    return this.http.get<User[]>(`${this.apiUrl}/users`, { headers });
   }
 }

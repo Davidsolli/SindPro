@@ -34,7 +34,7 @@ export class NotificationService {
     );
   }
 
-  createNotification(title: string, message: string): Observable<Warning> {
+  createWarning(title: string, message: string): Observable<Warning> {
     const headers = this.getToken();
     return this.http.post<Warning>(
       `${this.apiUrl}/warnings`,
@@ -42,6 +42,19 @@ export class NotificationService {
         title,
         message,
       },
+      { headers }
+    );
+  }
+
+  createNotification(
+    title: string,
+    message: string,
+    receiverId: number
+  ): Observable<Notification> {
+    const headers = this.getToken();
+    return this.http.post<Notification>(
+      `${this.apiUrl}/notifications`,
+      { title, message, receiverId },
       { headers }
     );
   }

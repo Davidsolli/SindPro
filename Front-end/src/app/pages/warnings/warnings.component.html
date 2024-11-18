@@ -22,7 +22,10 @@
 
   <div class="add-notification">
     <h2>Ocorrências</h2>
-    <button (click)="navigate('#')" *ngIf="user?.userRole === 'ADMIN'">
+    <button
+      (click)="navigate('create-warning')"
+      *ngIf="user?.userRole === 'ADMIN'"
+    >
       Adicionar ocorrência
     </button>
   </div>

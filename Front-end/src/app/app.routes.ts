@@ -9,9 +9,10 @@ import { WarningsComponent } from './pages/warnings/warnings.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { VisitorsComponent } from './pages/visitors/visitors.component';
 import { RentSpaceComponent } from './pages/rent-space/rent-space.component';
-import { CreateNotificationComponent } from './pages/warnings/create-notification/create-notification.component';
+import { CreateNotificationComponent } from './pages/warnings/create-warning/create-notification.component';
 import { RentSpaceTableComponent } from './pages/rent-space/rent-space-table/rent-space-table.component';
 import { RentSpaceFormComponent } from './pages/rent-space/rent-space-form/rent-space-form.component';
+import { CreateWarningComponent } from './pages/warnings/create-notification/create-warning.component';
 
 export const routes: Routes = [
   {
@@ -68,4 +69,9 @@ export const routes: Routes = [
     component: RentSpaceFormComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'create-warning',
+    component: CreateWarningComponent,
+    canActivate: [AuthGuardService]
+  }
 ];

@@ -1,0 +1,42 @@
+<app-home-layout>
+  <div class="warning-form-area">
+    <form
+      class="warning-form"
+      [formGroup]="notificationForm"
+      (ngSubmit)="submit()"
+    >
+      <h3>Ocorrência</h3>
+      <div class="input-form-area">
+        <label for="title">Título</label>
+        <input
+          formControlName="title"
+          type="text"
+          id="title"
+          placeholder="Informe o título da mensagem"
+        />
+      </div>
+      <div class="input-form-area">
+        <label for="message">Mensagem</label>
+        <textarea
+          formControlName="message"
+          name="mensagem"
+          placeholder="Escreva sua mensagem aqui"
+        ></textarea>
+      </div>
+      <div class="input-form-area">
+        <select required formControlName="receiverId"
+          ><option value="" disabled selected>Selecione o morador</option>
+          <option *ngFor="let user of users"
+            ><p>{{user.id}}</p>
+            -
+            <p>{{user.name}}</p></option
+          ></select
+        >
+      </div>
+      <div class="button-area">
+        <button type="submit">enviar</button>
+        <button type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</app-home-layout>

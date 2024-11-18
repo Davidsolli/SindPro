@@ -1,5 +1,3 @@
-
-
 .read {
   display: flex;
   justify-content: end;
@@ -17,7 +15,7 @@
   padding: 20px;
   border-radius: 8px;
   font-size: 12px;
-  margin-top: 10px;
+  margin-bottom: 20px;
 
   h3 {
     font-size: 14px;
@@ -54,6 +52,7 @@
 .add-warning {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 30px;
 
   button {
     padding: 12px;
