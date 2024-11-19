@@ -79,4 +79,8 @@ export class CreateWarningComponent {
         error: () => this.toastr.error('Erro ao enviar notificação!'),
       });
   }
+
+  navigate(route: string) {
+    this.router.navigate([route]);
+  }
 }

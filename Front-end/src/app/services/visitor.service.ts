@@ -11,17 +11,29 @@ export class VisitorService {
 
   constructor(private http: HttpClient) {}
 
-  getVisitors(userId: number): Observable<Visitor[]> {
+  getToken() {
     const token = sessionStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
+  createVisitors(name: string, document: string): Observable<Visitor> {
+    const headers = this.getToken();
+    return this.http.post<Visitor>(
+      `${this.apiUrl}`,
+      { name, document },
+      { headers }
+    );
+  }
+
+  getVisitors(userId: number): Observable<Visitor[]> {
+    const headers = this.getToken();
     return this.http.get<Visitor[]>(`${this.apiUrl}/all/${userId}`, {
       headers,
     });
   }
 
   deleteVisitor(id: number) {
-    const token = sessionStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = this.getToken();
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
 }

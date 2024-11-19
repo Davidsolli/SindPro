@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-visitors',
   standalone: true,
-  imports: [HomeLayoutComponent, NgFor, NgIf],
+  imports: [HomeLayoutComponent, NgFor],
   templateUrl: './visitors.component.html',
   styleUrl: './visitors.component.scss',
 })
@@ -58,5 +58,9 @@ export class VisitorsComponent {
         console.error('Erro ao excluir visitante:', error);
       }
     );
+  }
+
+  navigate(route: string) {
+    this.router.navigate([route]);
   }
 }

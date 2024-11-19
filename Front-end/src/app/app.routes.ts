@@ -13,6 +13,7 @@ import { CreateNotificationComponent } from './pages/warnings/create-warning/cre
 import { RentSpaceTableComponent } from './pages/rent-space/rent-space-table/rent-space-table.component';
 import { RentSpaceFormComponent } from './pages/rent-space/rent-space-form/rent-space-form.component';
 import { CreateWarningComponent } from './pages/warnings/create-notification/create-warning.component';
+import { VisitorsFormComponent } from './pages/visitors/visitors-form/visitors-form.component';
 
 export const routes: Routes = [
   {
@@ -72,6 +73,11 @@ export const routes: Routes = [
   {
     path: 'create-warning',
     component: CreateWarningComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'visitors-form',
+    component: VisitorsFormComponent,
     canActivate: [AuthGuardService]
-  }
+  },
 ];

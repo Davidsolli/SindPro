@@ -1,7 +1,7 @@
 <app-home-layout title="Visitantes">
   <div class="view-visitors">
     <div class="btn">
-      <button *ngIf="user && user.userRole === 'ADMIN'">
+      <button (click)="navigate('visitors-form')">
         <img src="/assets/svgs/visitor/user-white.svg" alt="user-white" />Novo
         visitante
       </button>

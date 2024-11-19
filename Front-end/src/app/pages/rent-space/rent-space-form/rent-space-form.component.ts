@@ -86,4 +86,8 @@ export class RentSpaceFormComponent {
         error: () => this.toastr.error('Erro inesperado, tente novamente.'),
       });
   }
+
+  navigate(route: string) {
+    this.router.navigate([route]);
+  }
 }
