@@ -1,7 +1,6 @@
 package com.pidw.sindPro.controllers.auth;
 
 import com.pidw.sindPro.domains.users.User;
-import com.pidw.sindPro.domains.users.UserRole;
 import com.pidw.sindPro.dtos.auth.LoginDTO;
 import com.pidw.sindPro.dtos.auth.LoginResponseDTO;
 import com.pidw.sindPro.dtos.users.UserRegisterDTO;

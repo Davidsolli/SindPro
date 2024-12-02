@@ -17,6 +17,7 @@ public class ReservationDTO {
     private LocalDateTime updatedAt;
     private Long spaceId;
     private String spaceName;
+    private Long userId;
 
     public ReservationDTO(Reservation reservation) {
         id = reservation.getId();
@@ -25,5 +26,6 @@ public class ReservationDTO {
         updatedAt = reservation.getUpdatedAt();
         spaceId = reservation.getSpace().getId();
         spaceName = reservation.getSpace().getName();
+        userId = reservation.getUser().getId();
     }
 }

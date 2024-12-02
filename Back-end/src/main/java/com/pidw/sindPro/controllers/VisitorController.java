@@ -17,11 +17,11 @@ public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
-    @PostMapping(value = "/{userId}")
-    public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO, @PathVariable Long userId) {
-        visitorDTO = visitorService.create(visitorDTO, userId);
+    @PostMapping
+    public ResponseEntity<VisitorDTO> create(@RequestBody VisitorDTO visitorDTO) {
+        visitorDTO = visitorService.create(visitorDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{userId}").buildAndExpand(visitorDTO.getUserId()).toUri();
+                .path("/{id}").buildAndExpand(visitorDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(visitorDTO);
     }
 

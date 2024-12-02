@@ -21,11 +21,14 @@ public class VisitorService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Transactional
-    public VisitorDTO create(VisitorDTO visitorDTO, Long userId) {
+    public VisitorDTO create(VisitorDTO visitorDTO) {
         Visitor visitor = new Visitor();
         createEntity(visitor, visitorDTO);
-        visitor.setUser(userRepository.getReferenceById(userId));
+        visitor.setUser(userService.getAuthenticatedUser());
         visitor = visitorRepository.save(visitor);
         return new VisitorDTO(visitor);
     }

@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE, "/notifications/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/users/me").authenticated()
                         .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/visitors/{userId}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/visitors").authenticated()
                         .requestMatchers(HttpMethod.GET, "/visitors/{id}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/visitors/all/{userId}").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/visitors/{id}").authenticated()
